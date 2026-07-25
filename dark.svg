@@ -1,0 +1,326 @@
+<svg width="1180" height="610" viewBox="0 0 1180 610" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Background -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="100%" stop-color="#0B1120"/>
+    </linearGradient>
+
+    <!-- Accent gradient (violet -> cyan -> emerald) -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#10B981"/>
+      <animate attributeName="x1" values="0%;100%;0%" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="100%;200%;100%" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <!-- ASCII gradient -->
+    <linearGradient id="asciiGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+      <animateTransform attributeName="gradientTransform" type="rotate" values="0 0.5 0.5;360 0.5 0.5" dur="10s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <!-- Border shimmer -->
+    <linearGradient id="borderShimmer" x1="-50%" y1="0%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#22D3EE" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+      <animate attributeName="x1" values="-50%;150%" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="50%;250%" dur="5s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <radialGradient id="blobA" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobB" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobC" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="pillGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Noise -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.03 0"/>
+    </filter>
+
+    <clipPath id="rounded">
+      <rect x="0" y="0" width="1180" height="610" rx="26" ry="26"/>
+    </clipPath>
+    <clipPath id="leftPanelClip">
+      <rect x="30" y="30" width="410" height="550" rx="20" ry="20"/>
+    </clipPath>
+
+    <!-- Typewriter clip rects for greeting lines -->
+    <clipPath id="clipHi">
+      <rect x="500" y="70" width="0" height="40">
+        <animate attributeName="width" from="0" to="90" dur="0.6s" begin="0.3s" fill="freeze"/>
+      </rect>
+    </clipPath>
+    <clipPath id="clipName">
+      <rect x="500" y="105" width="0" height="46">
+        <animate attributeName="width" from="0" to="360" dur="1s" begin="1.1s" fill="freeze"/>
+      </rect>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#rounded)">
+    <rect x="0" y="0" width="1180" height="610" fill="url(#bgGrad)"/>
+
+    <!-- noise overlay -->
+    <rect x="0" y="0" width="1180" height="610" filter="url(#noise)"/>
+
+    <!-- floating background blobs -->
+    <circle cx="200" cy="120" r="220" fill="url(#blobA)" filter="url(#softBlur)">
+      <animateTransform attributeName="transform" type="translate" values="0 0;30 20;0 0" dur="9s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="950" cy="480" r="260" fill="url(#blobB)" filter="url(#softBlur)">
+      <animateTransform attributeName="transform" type="translate" values="0 0;-25 -15;0 0" dur="11s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="900" cy="90" r="180" fill="url(#blobC)" filter="url(#softBlur)">
+      <animateTransform attributeName="transform" type="translate" values="0 0;-15 25;0 0" dur="7.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- outer border shimmer -->
+    <rect x="2" y="2" width="1176" height="606" rx="24" ry="24" fill="none" stroke="url(#borderShimmer)" stroke-width="2"/>
+    <rect x="2" y="2" width="1176" height="606" rx="24" ry="24" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+
+    <!-- ============ LEFT PANEL ============ -->
+    <g>
+      <rect x="30" y="30" width="410" height="550" rx="20" ry="20" fill="url(#panelGrad)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+      <rect x="31" y="31" width="408" height="70" rx="20" ry="20" fill="#FFFFFF" opacity="0.04"/>
+
+      <g clip-path="url(#leftPanelClip)">
+        <g font-family="'Fira Code','SFMono-Regular',Consolas,monospace" font-size="14.5" fill="url(#asciiGrad)">
+          <animateTransform attributeName="transform" type="translate" values="0 0;0 -8;0 0" dur="6s" repeatCount="indefinite" additive="sum"/>
+          <text x="55" y="68.0" opacity="0" xml:space="preserve">      .-"""""-.<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.00s" fill="freeze"/></text>
+          <text x="55" y="90.5" opacity="0" xml:space="preserve">     /         \<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.15s" fill="freeze"/></text>
+          <text x="55" y="113.0" opacity="0" xml:space="preserve">    |  o     o  |<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.30s" fill="freeze"/></text>
+          <text x="55" y="135.5" opacity="0" xml:space="preserve">    |     ▽     |<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.45s" fill="freeze"/></text>
+          <text x="55" y="158.0" opacity="0" xml:space="preserve">    |  \_____/  |<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.60s" fill="freeze"/></text>
+          <text x="55" y="180.5" opacity="0" xml:space="preserve">     \         /<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.75s" fill="freeze"/></text>
+          <text x="55" y="203.0" opacity="0" xml:space="preserve">      '-.....-'<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="0.90s" fill="freeze"/></text>
+          <text x="55" y="225.5" opacity="0" xml:space="preserve">     .-'|     |'-.<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.05s" fill="freeze"/></text>
+          <text x="55" y="248.0" opacity="0" xml:space="preserve">    /   |     |   \<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.20s" fill="freeze"/></text>
+          <text x="55" y="270.5" opacity="0" xml:space="preserve">   |    |  AI |    |<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.35s" fill="freeze"/></text>
+          <text x="55" y="293.0" opacity="0" xml:space="preserve">   |    |  ML |    |<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.50s" fill="freeze"/></text>
+          <text x="55" y="315.5" opacity="0" xml:space="preserve">    \   |     |   /<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.65s" fill="freeze"/></text>
+          <text x="55" y="338.0" opacity="0" xml:space="preserve">     '-.|_____|.-'<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.80s" fill="freeze"/></text>
+          <text x="55" y="360.5" opacity="0" xml:space="preserve">       //     \\<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.95s" fill="freeze"/></text>
+          <text x="55" y="383.0" opacity="0" xml:space="preserve">      //       \\<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.10s" fill="freeze"/></text>
+          <text x="55" y="405.5" opacity="0" xml:space="preserve">     '"         "'<animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="2.25s" fill="freeze"/></text>
+        </g>
+
+        <!-- scanline sweep -->
+        <rect x="30" y="30" width="410" height="3" fill="#22D3EE" opacity="0.5">
+          <animate attributeName="y" values="30;570;30" dur="5s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+
+      <text x="235" y="555" text-anchor="middle" font-family="'Fira Code',monospace" font-size="12" fill="#94A3B8">
+        <tspan fill="#22D3EE">&gt;</tspan> building intelligence<tspan opacity="0.9">
+          <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+        </tspan><tspan fill="#22D3EE">_</tspan>
+      </text>
+    </g>
+
+    <!-- ============ RIGHT PANEL ============ -->
+    <g>
+      <rect x="470" y="30" width="680" height="550" rx="20" ry="20" fill="url(#panelGrad)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+      <rect x="471" y="31" width="678" height="60" rx="20" ry="20" fill="#FFFFFF" opacity="0.04"/>
+
+      <!-- terminal titlebar -->
+      <circle cx="500" cy="55" r="6" fill="#FF5F56"/>
+      <circle cx="522" cy="55" r="6" fill="#FFBD2E"/>
+      <circle cx="544" cy="55" r="6" fill="#27C93F"/>
+      <text x="1120" y="60" text-anchor="end" font-family="'Fira Code',monospace" font-size="12" fill="#94A3B8">shahman@portfolio: ~</text>
+      <line x1="470" y1="86" x2="1150" y2="86" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+
+      <!-- greeting -->
+      <g font-family="'Fira Code',monospace" font-weight="600">
+        <text x="500" y="100" font-size="26" fill="#F8FAFC" clip-path="url(#clipHi)">Hi</text>
+        <text x="608" y="100" font-size="26" opacity="0">
+          <animate attributeName="opacity" values="0;1" dur="0.1s" begin="0.9s" fill="freeze"/>
+          👋
+        </text>
+        <text x="500" y="140" font-size="30" fill="#F8FAFC" clip-path="url(#clipName)">I'm Shahman Ahmad</text>
+      </g>
+
+      <!-- typing tagline -->
+      <g font-family="'Fira Code',monospace" font-size="19" fill="#22D3EE">
+        <text x="500" y="180">
+          <tspan>
+            <animate attributeName="visibility" values="visible" begin="0s" dur="1s"/>
+          </tspan>
+          <tspan x="500" y="180" opacity="0">AI Engineer<animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.78;0.90;1" dur="9.600000000000001s" begin="0.0s" repeatCount="indefinite"/></tspan>
+          <tspan x="500" y="180" opacity="0">Machine Learning Enthusiast<animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.78;0.90;1" dur="9.600000000000001s" begin="3.2s" repeatCount="indefinite"/></tspan>
+          <tspan x="500" y="180" opacity="0">DSA Problem Solver<animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.78;0.90;1" dur="9.600000000000001s" begin="6.4s" repeatCount="indefinite"/></tspan>
+        </text>
+        <rect x="500" y="167" width="9" height="20" fill="#22D3EE">
+          <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.45;0.5;0.95;1" dur="1s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+
+      <!-- info rows -->
+      <g font-family="'Fira Code',monospace" font-size="15" fill="#94A3B8">
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="2.4s" fill="freeze"/>
+          <text x="500" y="222"><tspan fill="#7C3AED">📍</tspan> Lahore, Pakistan</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="2.9s" fill="freeze"/>
+          <text x="500" y="250"><tspan fill="#22D3EE">🎓</tspan> BS Artificial Intelligence, UMT</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="3.4s" fill="freeze"/>
+          <text x="500" y="278"><tspan fill="#10B981">⚡</tspan> Focus: AI Systems &amp; Data Structures</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="3.9s" fill="freeze"/>
+          <text x="500" y="306"><tspan fill="#7C3AED">✉</tspan> shahmanahmadabdulnafay@gmail.com</text>
+        </g>
+      </g>
+
+      <line x1="500" y1="330" x2="1120" y2="330" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+
+      <text x="500" y="358" font-family="'Fira Code',monospace" font-size="13" fill="#94A3B8" letter-spacing="1.5">SKILLS</text>
+
+      <g font-family="'Inter','Segoe UI',sans-serif" font-size="13.5" font-weight="600">
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.20s" fill="freeze"/>
+          <rect x="500.0" y="380" width="71.6" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="5.20s" repeatCount="indefinite"/>
+          </rect>
+          <text x="535.8" y="400" text-anchor="middle" fill="#F8FAFC">Python</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.35s" fill="freeze"/>
+          <rect x="583.6" y="380" width="45.8" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="5.35s" repeatCount="indefinite"/>
+          </rect>
+          <text x="606.5" y="400" text-anchor="middle" fill="#F8FAFC">C++</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.50s" fill="freeze"/>
+          <rect x="641.4" y="380" width="106.0" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="5.50s" repeatCount="indefinite"/>
+          </rect>
+          <text x="694.4" y="400" text-anchor="middle" fill="#F8FAFC">TensorFlow</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.65s" fill="freeze"/>
+          <rect x="759.4" y="380" width="80.2" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="5.65s" repeatCount="indefinite"/>
+          </rect>
+          <text x="799.5" y="400" text-anchor="middle" fill="#F8FAFC">PyTorch</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.80s" fill="freeze"/>
+          <rect x="851.6" y="380" width="45.8" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="5.80s" repeatCount="indefinite"/>
+          </rect>
+          <text x="874.5" y="400" text-anchor="middle" fill="#F8FAFC">Git</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.95s" fill="freeze"/>
+          <rect x="909.4" y="380" width="45.8" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="5.95s" repeatCount="indefinite"/>
+          </rect>
+          <text x="932.3" y="400" text-anchor="middle" fill="#F8FAFC">SQL</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.10s" fill="freeze"/>
+          <rect x="967.2" y="380" width="149.0" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="6.10s" repeatCount="indefinite"/>
+          </rect>
+          <text x="1041.7" y="400" text-anchor="middle" fill="#F8FAFC">Data Structures</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.25s" fill="freeze"/>
+          <rect x="500.0" y="422" width="157.6" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="6.25s" repeatCount="indefinite"/>
+          </rect>
+          <text x="578.8" y="442" text-anchor="middle" fill="#F8FAFC">Machine Learning</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.40s" fill="freeze"/>
+          <rect x="669.6" y="422" width="174.8" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="6.40s" repeatCount="indefinite"/>
+          </rect>
+          <text x="757.0" y="442" text-anchor="middle" fill="#F8FAFC">Prompt Engineering</text>
+        </g>
+        <g opacity="0">
+          <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.55s" fill="freeze"/>
+          <rect x="856.4" y="422" width="63.0" height="30" rx="15" ry="15" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.5" filter="url(#pillGlow)">
+            <animate attributeName="stroke-opacity" values="0.35;0.75;0.35" dur="3.5s" begin="6.55s" repeatCount="indefinite"/>
+          </rect>
+          <text x="887.9" y="442" text-anchor="middle" fill="#F8FAFC">Canva</text>
+        </g>
+      </g>
+
+      <line x1="500" y1="490" x2="1120" y2="490" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+
+      <!-- social icons -->
+      <g>
+        <a xlink:href="https://github.com/ShahmanAhmad">
+          <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="4.80s" fill="freeze"/>
+            <circle cx="500" cy="528" r="20" fill="#0F172A" fill-opacity="0.6" stroke="#7C3AED" stroke-opacity="0.6" filter="url(#glow)">
+              <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="3s" begin="4.80s" repeatCount="indefinite"/>
+            </circle>
+            <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z" transform="translate(490.5,518.5) scale(0.79)" fill="#7C3AED"/>
+          </g>
+        </a>
+        <a xlink:href="https://www.linkedin.com/in/shahman-ahmad-abdul-nafay-9a1841419">
+          <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.00s" fill="freeze"/>
+            <circle cx="560" cy="528" r="20" fill="#0F172A" fill-opacity="0.6" stroke="#22D3EE" stroke-opacity="0.6" filter="url(#glow)">
+              <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="3s" begin="5.00s" repeatCount="indefinite"/>
+            </circle>
+            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.83v2.05h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.8 2.67 4.8 6.14V23h-4v-6.85c0-1.63-.03-3.73-2.27-3.73-2.27 0-2.62 1.77-2.62 3.6V23h-4V8z" transform="translate(550.5,518.5) scale(0.79)" fill="#22D3EE"/>
+          </g>
+        </a>
+        <a xlink:href="https://www.instagram.com/shahmankaleem">
+          <g opacity="0">
+            <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="5.20s" fill="freeze"/>
+            <circle cx="620" cy="528" r="20" fill="#0F172A" fill-opacity="0.6" stroke="#10B981" stroke-opacity="0.6" filter="url(#glow)">
+              <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="3s" begin="5.20s" repeatCount="indefinite"/>
+            </circle>
+            <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.02-3.58.07-4.85C2.5 3.82 4.02 2.27 7.27 2.12 8.4 2.06 8.78 2.05 12 2.05L12 2.16zm0 3.6a6.24 6.24 0 1 0 0 12.48 6.24 6.24 0 0 0 0-12.48zm0 10.3a4.06 4.06 0 1 1 0-8.12 4.06 4.06 0 0 1 0 8.12zm7.95-10.55a1.46 1.46 0 1 1-2.92 0 1.46 1.46 0 0 1 2.92 0z" transform="translate(610.5,518.5) scale(0.79)" fill="#10B981"/>
+          </g>
+        </a>
+      </g>
+    </g>
+  </g>
+</svg>
